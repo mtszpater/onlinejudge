@@ -1,4 +1,4 @@
-package pl.uwr.onlinejudge.entities;
+package pl.uwr.onlinejudge.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

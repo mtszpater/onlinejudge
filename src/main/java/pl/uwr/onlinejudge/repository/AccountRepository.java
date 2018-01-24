@@ -1,7 +1,7 @@
 package pl.uwr.onlinejudge.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.uwr.onlinejudge.entities.Account;
+import pl.uwr.onlinejudge.model.entity.Account;
 
 import java.util.Optional;
 
