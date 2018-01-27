@@ -38,4 +38,15 @@ public class GroupController {
 
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
+
+    @GetMapping(value = "/{id}")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public ResponseEntity<Group> getGroup(@PathVariable("id") long groupId) {
+        Group group = groupService.findOne(groupId);
+
+        if (group != null)
+            return new ResponseEntity<>(group, HttpStatus.OK);
+
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
 }

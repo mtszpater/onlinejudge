@@ -35,4 +35,8 @@ public class GroupService {
         return groupRepository.save(objectMapper.convertValue(newGroupForm, Group.class));
 
     }
+
+    public Group findOne(long groupId) {
+        return groupRepository.findOne(groupId);
+    }
 }
