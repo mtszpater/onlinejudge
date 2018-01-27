@@ -1,7 +1,6 @@
 package pl.uwr.onlinejudge.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.LinkedList;
@@ -28,13 +27,7 @@ public class Group {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
     @JsonIgnore
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    List<Registration> registrations = new LinkedList<>();
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @JsonIgnore
-    List<TaskList> taskLists = new LinkedList<>();
+    private List<Registration> registrations = new LinkedList<>();
 
     public long getId() {
         return id;
@@ -82,13 +75,5 @@ public class Group {
 
     public void setRegistrations(List<Registration> registrations) {
         this.registrations = registrations;
-    }
-
-    public List<TaskList> getTaskLists() {
-        return taskLists;
-    }
-
-    public void setTaskLists(List<TaskList> taskLists) {
-        this.taskLists = taskLists;
     }
 }

@@ -1,8 +1,6 @@
 package pl.uwr.onlinejudge.model.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +15,6 @@ public class Registration {
     private Account account;
 
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(nullable = false)
     private Group group;
 
