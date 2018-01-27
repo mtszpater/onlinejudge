@@ -29,6 +29,10 @@ public class Group {
     @JsonIgnore
     private List<Registration> registrations = new LinkedList<>();
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
+    @JsonIgnore
+    private List<Task> tasks = new LinkedList<>();
+
     public long getId() {
         return id;
     }
@@ -75,5 +79,13 @@ public class Group {
 
     public void setRegistrations(List<Registration> registrations) {
         this.registrations = registrations;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 }

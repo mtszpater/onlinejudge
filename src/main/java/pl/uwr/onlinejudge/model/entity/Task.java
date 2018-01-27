@@ -1,6 +1,7 @@
 package pl.uwr.onlinejudge.model.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import pl.uwr.onlinejudge.util.Language;
 
 import javax.persistence.*;
@@ -16,6 +17,11 @@ public class Task {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Account account;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    @JsonBackReference
+    private Group group;
 
     @Column(nullable = false)
     private String name;
@@ -90,4 +96,11 @@ public class Task {
         this.description = description;
     }
 
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
 }
