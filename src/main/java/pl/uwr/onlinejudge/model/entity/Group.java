@@ -23,8 +23,6 @@ public class Group {
     @Lob
     private String description;
 
-    private String password;
-
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
     @JsonIgnore
     private List<Registration> registrations = new LinkedList<>();
@@ -55,14 +53,6 @@ public class Group {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getDescription() {

@@ -1,5 +1,7 @@
 package pl.uwr.onlinejudge.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +16,7 @@ public class Account {
     @Column(name = "username", length = 128)
     private String username;
     @Column(name = "password", length = 128)
+    @JsonIgnore
     private String password;
 
     public Account() {
