@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pl.uwr.onlinejudge.model.entity.Group;
+import pl.uwr.onlinejudge.model.entity.Task;
 import pl.uwr.onlinejudge.model.pojo.NewGroupForm;
 import pl.uwr.onlinejudge.service.GroupService;
 
@@ -49,4 +50,16 @@ public class GroupController {
 
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
+
+    @GetMapping(value = "/{id}/zadania")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public ResponseEntity<List<Task>> getTasksFromGroup(@PathVariable("id") long groupId) {
+        Group group = groupService.findOne(groupId);
+
+        if (group != null)
+            return new ResponseEntity<>(group.getTasks(), HttpStatus.OK);
+
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
 }

@@ -27,7 +27,7 @@ public class Group {
     @JsonIgnore
     private List<Registration> registrations = new LinkedList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
     @JsonIgnore
     private List<Task> tasks = new LinkedList<>();
 
