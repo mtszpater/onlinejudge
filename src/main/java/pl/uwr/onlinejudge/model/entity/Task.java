@@ -2,11 +2,14 @@ package pl.uwr.onlinejudge.model.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import pl.uwr.onlinejudge.util.Language;
 
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 public class Task {
@@ -34,6 +37,11 @@ public class Task {
 
     @Lob
     private String comment;
+
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "test")
+    @JsonIgnore
+    private List<Test> tests = new LinkedList<>();
 
     @ElementCollection(targetClass = Language.class)
     @Enumerated(EnumType.STRING)
@@ -102,5 +110,13 @@ public class Task {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public List<Test> getTests() {
+        return tests;
+    }
+
+    public void setTests(List<Test> tests) {
+        this.tests = tests;
     }
 }
