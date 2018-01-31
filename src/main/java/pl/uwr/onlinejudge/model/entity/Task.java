@@ -39,7 +39,7 @@ public class Task {
     private String comment;
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "test")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "task")
     @JsonIgnore
     private List<Test> tests = new LinkedList<>();
 
